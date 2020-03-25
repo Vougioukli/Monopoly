@@ -119,7 +119,6 @@ public class Board extends JFrame{
 		bottomPanel.add(bottomBlock1.getPicture());
 		bottomPanel.add(goToJailBlock.getPicture());//GO TO JAIL goes here
 		
-		//updateBoard(currentPlayer, 0);
 		//Add all the sides to the board
 		panel.add(leftPanel, BorderLayout.WEST);
 		panel.add(topPanel, BorderLayout.NORTH);
@@ -234,7 +233,7 @@ public class Board extends JFrame{
 			case 39:
 				return bottomBlock9;
 			default:
-				return new BoardBlock("");
+				return null;
 		}
 	}
 	

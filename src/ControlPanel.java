@@ -23,11 +23,13 @@ public class ControlPanel extends JFrame{
     private boolean playAgain = false;
     private ArrayList<Player> players;
     private Board board;
+    private ControlPanel frame;
     
     
     public ControlPanel(ArrayList<Player> players) {
     	this.players = players;
     	currentPlayerIndex = 0;
+    	frame = this;
     	board = new Board();
     	initializeBoard();
     	
@@ -81,16 +83,13 @@ public class ControlPanel extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int moveFor = rollDiceAction();
-				BoardBlock block = board.updateBoard(players.get(currentPlayerIndex), moveFor);
-				executeBlockAction(block);
+				updateBoard(moveFor);
 				if(!playAgain) {
 					rollDice.setEnabled(false); //if playAgain==true you can roll again
 					endRound.setEnabled(true); //if playAgain==false you can finish your round
-					//playAgain = false;
 				}
 				else if(playAgain)
 				{
-					//endRound.setEnabled(false);
 					playAgain = false;
 				}
 			}
@@ -221,6 +220,11 @@ public class ControlPanel extends JFrame{
     		listModel.addElement(card);
     	}
     	playerCards.setModel(listModel);
+    	if(players.get(currentPlayerIndex).isInJail())
+    	{
+
+        	new GetOutOfJail(frame, true, players.get(currentPlayerIndex));
+    	}
     }
     
     public void endRoundAction() {
@@ -230,9 +234,9 @@ public class ControlPanel extends JFrame{
     }
     
     public int rollDiceAction() {
-    	int firstDie = ThreadLocalRandom.current().nextInt(1, 7);     	
+    	int firstDie = 1;//ThreadLocalRandom.current().nextInt(1, 7);     	
     	die1.setText(Integer.toString(firstDie));
-    	int secondDie = ThreadLocalRandom.current().nextInt(1,7);
+    	int secondDie = 2;//ThreadLocalRandom.current().nextInt(1,7);
     	die2.setText(Integer.toString(secondDie));
     	if(firstDie == secondDie)
     		playAgain = true;
@@ -254,6 +258,11 @@ public class ControlPanel extends JFrame{
     	}*/
     }
     
+    public void updateBoard(int moveFor) { //This method is created for the GetOutOfJail class can use it
+    	BoardBlock block = board.updateBoard(players.get(currentPlayerIndex), moveFor);
+		executeBlockAction(block);
+    }
+    
     public void executeBlockAction(BoardBlock block) {
     	currCardOptions.setEnabled(true);
     }
@@ -265,7 +274,15 @@ public class ControlPanel extends JFrame{
     	}
     }
     
-    public static void main(ArrayList<Player> players) {
+    public boolean isPlayAgain() {
+		return playAgain;
+	}
+
+	public void setPlayAgain(boolean playAgain) {
+		this.playAgain = playAgain;
+	}
+
+	public static void main(ArrayList<Player> players) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.

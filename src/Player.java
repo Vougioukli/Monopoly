@@ -9,6 +9,8 @@ public class Player {
 	private ArrayList<String> cards = new ArrayList<>();
 	private int position;
 	private JLabel pawn;
+	private boolean inJail;
+	private int timeInJail;
 	//private ImageIcon pion;
 	//private String pion;
 	
@@ -19,6 +21,8 @@ public class Player {
 		cards.add("blue 1");
 		cards.add(name);
 		position = 0;
+		timeInJail = 0;
+		inJail = false;
 		this.pawn  = new JLabel(new ImageIcon("Icons/pion.png"));
 		//this.pion = new ImageIcon("pion.png");
 		//this.pion = "pion.png";
@@ -26,6 +30,22 @@ public class Player {
 
 	public String getName() {
 		return name;
+	}
+
+	public boolean isInJail() {
+		return inJail;
+	}
+
+	public void setInJail(boolean inJail) {
+		this.inJail = inJail;
+	}
+
+	public int getTimeInJail() {
+		return timeInJail;
+	}
+
+	public void setTimeInJail(int timeInJail) {
+		this.timeInJail = timeInJail;
 	}
 
 	public void setName(String name) {
