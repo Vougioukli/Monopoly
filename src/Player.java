@@ -19,7 +19,7 @@ public class Player {
 		cards.add("blue 1");
 		cards.add(name);
 		position = 0;
-		this.pawn  = new JLabel(new ImageIcon("pion.png"));
+		this.pawn  = new JLabel(new ImageIcon("Icons/pion.png"));
 		//this.pion = new ImageIcon("pion.png");
 		//this.pion = "pion.png";
 	}

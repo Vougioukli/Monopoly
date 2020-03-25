@@ -4,20 +4,20 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class BoardBlock {
-	 private static int totalBlocks = 0;
+	 private static int TOTALBLOCKS = 0;
 	 private int position;
 	 private JLabel picture;
 	 private ImageIcon icon;
 
 	 public BoardBlock(String picturePath) {
-		 position = totalBlocks;
-		 totalBlocks++;
+		 position = TOTALBLOCKS;
+		 TOTALBLOCKS++;
 		 icon = new ImageIcon(picturePath);
 		 picture = new JLabel(icon);
 	 }
 
 	public static int getTotalBlocks() {
-		return totalBlocks;
+		return TOTALBLOCKS;
 	}
 
 	public int getPosition() {

@@ -55,9 +55,11 @@ public class ControlPanel extends JFrame{
         die2.setText("Die2");
         jScrollPane1.setViewportView(playerCards);
         currCardOptions.setText("Current Card Options");
+        currCardOptions.setEnabled(false); //You can not manage the current card before playing
         manageCards.setText("Manage Cards");
         forfeit.setText("Forfeit");
         endRound.setText("End Round");
+        endRound.setEnabled(false); //You have to play before finishing your round
         endGame.setText("End Game");
         //Set the Panel for the first Player
         updateControlPanel();
@@ -79,7 +81,18 @@ public class ControlPanel extends JFrame{
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				int moveFor = rollDiceAction();
-				board.updateBoard(players.get(currentPlayerIndex), 5);
+				BoardBlock block = board.updateBoard(players.get(currentPlayerIndex), moveFor);
+				executeBlockAction(block);
+				if(!playAgain) {
+					rollDice.setEnabled(false); //if playAgain==true you can roll again
+					endRound.setEnabled(true); //if playAgain==false you can finish your round
+					//playAgain = false;
+				}
+				else if(playAgain)
+				{
+					//endRound.setEnabled(false);
+					playAgain = false;
+				}
 			}
         	
         });
@@ -102,6 +115,20 @@ public class ControlPanel extends JFrame{
 				//Calls the get Winner Class
 			}
         	
+        });
+        
+        currCardOptions.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		//Calls the CurrentCards class
+        	}
+        });
+        
+        manageCards.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent e) {
+        		//Calls the ManageCards class
+        	}
         });
         
         //Set the layout
@@ -198,6 +225,8 @@ public class ControlPanel extends JFrame{
     
     public void endRoundAction() {
     	currentPlayerIndex = (currentPlayerIndex+1) % players.size();
+    	endRound.setEnabled(false); 
+    	rollDice.setEnabled(true); //when the round finishes re enable the rollDice for the next Player 
     }
     
     public int rollDiceAction() {
@@ -225,8 +254,8 @@ public class ControlPanel extends JFrame{
     	}*/
     }
     
-    public void executeBlockAction(/*BoardBlock block*/) {
-    	
+    public void executeBlockAction(BoardBlock block) {
+    	currCardOptions.setEnabled(true);
     }
     
     public void initializeBoard() {
@@ -234,6 +263,39 @@ public class ControlPanel extends JFrame{
     	{
     		board.initializeBoard(p);
     	}
+    }
+    
+    public static void main(ArrayList<Player> players) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(ControlPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(ControlPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(ControlPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(ControlPanel.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new ControlPanel(players).setVisible(true);
+            }
+        });
     }
 }
 
