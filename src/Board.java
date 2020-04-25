@@ -144,7 +144,7 @@ public class Board extends JFrame{
 		currentPlayer = player;
 		BoardBlock block = getPlayerPositionOnBoard();
 		block.removePawn(currentPlayer.getPawn());
-		player.setPosition(moveFor);
+		player.movePlayer(moveFor);
 		block = getPlayerPositionOnBoard();
 		block.addPawn(currentPlayer.getPawn());
 		return block;

@@ -35,7 +35,7 @@ public class GetOutOfJail extends JDialog {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				//Call the players pay method /////////////////////////////////////////////////AAAAAAAAAAAAAAAAAA
-				player.setInJail(false);
+				player.getOutOfJail(false);
 				player.setTimeInJail(0);
 				dialog.dispose();
 			}
@@ -48,7 +48,7 @@ public class GetOutOfJail extends JDialog {
 			public void actionPerformed(ActionEvent e) {
 				int moveFor = parent.rollDiceAction();
 				if(parent.isPlayAgain()) {
-					player.setInJail(false);
+					player.getOutOfJail(false);
 					player.setTimeInJail(0);
 					parent.updateBoard(moveFor);
 					parent.setPlayAgain(false);

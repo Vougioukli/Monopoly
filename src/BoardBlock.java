@@ -49,6 +49,9 @@ public class BoardBlock {
 	public String toString() {
 		return "BoardBlock [position=" + position + "]";
 	}
-
+	
+	public void executeBlockAction(Player player) {
+		player.goToJail();
+	}
  
 }

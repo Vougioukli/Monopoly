@@ -234,9 +234,9 @@ public class ControlPanel extends JFrame{
     }
     
     public int rollDiceAction() {
-    	int firstDie = 1;//ThreadLocalRandom.current().nextInt(1, 7);     	
+    	int firstDie = ThreadLocalRandom.current().nextInt(1, 7);     	
     	die1.setText(Integer.toString(firstDie));
-    	int secondDie = 2;//ThreadLocalRandom.current().nextInt(1,7);
+    	int secondDie = ThreadLocalRandom.current().nextInt(1,7);
     	die2.setText(Integer.toString(secondDie));
     	if(firstDie == secondDie)
     		playAgain = true;
@@ -265,6 +265,7 @@ public class ControlPanel extends JFrame{
     
     public void executeBlockAction(BoardBlock block) {
     	currCardOptions.setEnabled(true);
+    	block.executeBlockAction(players.get(currentPlayerIndex));
     }
     
     public void initializeBoard() {
