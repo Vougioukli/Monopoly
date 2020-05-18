@@ -127,6 +127,7 @@ public class ControlPanel extends JFrame{
         	@Override
         	public void actionPerformed(ActionEvent e) {
         		//Calls the ManageCards class
+        		players.get(currentPlayerIndex).goToJail();
         	}
         });
         
@@ -265,7 +266,7 @@ public class ControlPanel extends JFrame{
     
     public void executeBlockAction(BoardBlock block) {
     	currCardOptions.setEnabled(true);
-    	block.executeBlockAction(players.get(currentPlayerIndex));
+    	//block.executeBlockAction(players.get(currentPlayerIndex));
     }
     
     public void initializeBoard() {
