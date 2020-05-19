@@ -29,12 +29,12 @@ public class Board extends JFrame{
 		//Creation of the left side of the board
 		startBlock = new BoardBlock("Icons/start.jpg");//START
 		leftBlock1 = new BoardBlock("Icons/small.png");
-		leftBlock2 = new BoardBlock("Icons/decisionVertical.jpg");
+		leftBlock2 = new BoardBlock("Icons/chanceSide.jpg");
 		leftBlock3 = new BoardBlock("Icons/small.png");
 		leftBlock4 = new BoardBlock("Icons/small.png");
 		leftBlock5 = new BoardBlock("Icons/small.png");
 		leftBockl6 = new BoardBlock("Icons/small.png");
-		leftBlock7 = new BoardBlock("Icons/instructionVertical.jpg");
+		leftBlock7 = new BoardBlock("Icons/orderSide.jpg");
 		leftBlock8 = new BoardBlock("Icons/small.png");
 		leftBlock9 = new BoardBlock("Icons/small.png");
 		
@@ -46,14 +46,14 @@ public class Board extends JFrame{
 		topBlock4 = new BoardBlock("Icons/smallVert.png");
 		topBlock5 = new BoardBlock("Icons/smallVert.png");
 		topBlock6 = new BoardBlock("Icons/smallVert.png");
-		topBlock7 = new BoardBlock("Icons/decisionSide.jpg");
+		topBlock7 = new BoardBlock("Icons/chanceVertical.jpg");
 		topBlock8 = new BoardBlock("Icons/smallVert.png");
 		topBlock9 = new BoardBlock("Icons/smallVert.png");
 		
 		//Creation of the right side of the board
 		stopBlock   = new BoardBlock("Icons/stop.jpg");//STOP
 		rightBlock1 = new BoardBlock("Icons/small.png");
-		rightBlock2 = new BoardBlock("Icons/instructionVertical.jpg");
+		rightBlock2 = new BoardBlock("Icons/orderSide.jpg");
 		rightBlock3 = new BoardBlock("Icons/small.png");
 		rightBlock4 = new BoardBlock("Icons/small.png");
 		rightBlock5 = new BoardBlock("Icons/small.png");
@@ -66,10 +66,10 @@ public class Board extends JFrame{
 		goToJailBlock = new BoardBlock("Icons/goToJail.jpg");//GO TO JAIL
 		bottomBlock1  = new BoardBlock("Icons/smallVert.png");
 		bottomBlock2  = new BoardBlock("Icons/smallVert.png");
-		bottomBlock3  = new BoardBlock("Icons/decisionSide.jpg");
+		bottomBlock3  = new BoardBlock("Icons/chanceVetrical.jpg");
 		bottomBlock4  = new BoardBlock("Icons/smallVert.png");
 		bottomBlock5  = new BoardBlock("Icons/smallVert.png");
-		bottomBlock6  = new BoardBlock("Icons/instructionSide.jpg");
+		bottomBlock6  = new BoardBlock("Icons/orderVertical.jpg");
 		bottomBlock7  = new BoardBlock("Icons/smallVert.png");
 		bottomBlock8  = new BoardBlock("Icons/smallVert.png");
 		bottomBlock9  = new BoardBlock("Icons/smallVert.png");
