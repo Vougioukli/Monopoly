@@ -39,6 +39,10 @@ public class Player {
 		movePlayerToBlock(10);
 		
 	}
+	
+	public void getOutOfJail() {
+		this.inJail = false;
+	}
 
 	public int getTimeInJail() {
 		return timeInJail;
@@ -87,6 +91,10 @@ public class Player {
 			this.getPaid(200);
 		}
 	}
+	
+	public void movePlayerToBlock(int position) {
+		this.position = position;
+	}
 
 	public int getPosition() {
 		return position;
@@ -97,13 +105,9 @@ public class Player {
 	}
 
 	
-	public void getOutOfJail(boolean inJail) {
-		this.inJail = inJail;
-	}
+	
 
-	public void movePlayerToBlock(int position) {
-		this.position = position;
-	}
+	
 	
 	
 }

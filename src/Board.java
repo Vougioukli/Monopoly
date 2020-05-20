@@ -12,63 +12,63 @@ public class Board extends JFrame{
 	private JPanel bottomPanel;
 	private Player currentPlayer;
 	
-	private BoardBlock startBlock, leftBlock1, leftBlock2, leftBlock3, leftBlock4, leftBlock5, leftBockl6, leftBlock7, leftBlock8, leftBlock9,
+	private BoardBlock startBlock, leftBlock1, leftBlock2, leftBlock3, leftBlock4, leftBlock5, leftBlock6, leftBlock7, leftBlock8, leftBlock9,
 						jailBlock, topBlock1, topBlock2, topBlock3, topBlock4, topBlock5, topBlock6, topBlock7, topBlock8, topBlock9,
 						stopBlock, rightBlock1, rightBlock2, rightBlock3, rightBlock4, rightBlock5, rightBlock6, rightBlock7, rightBlock8, rightBlock9,
 						goToJailBlock, bottomBlock1, bottomBlock2, bottomBlock3, bottomBlock4, bottomBlock5, bottomBlock6, bottomBlock7, bottomBlock8, bottomBlock9;
 	
 	public Board() {
 		panel = new JPanel(new BorderLayout());
-		leftPanel = new JPanel(new GridLayout(9,1));//Due to the way that NORTH/SOUTH border overlap with WEST/EAST border the first block of the left side
+		leftPanel = new JPanel(new GridBagLayout());//new GridLayout(9,1));//Due to the way that NORTH/SOUTH border overlap with WEST/EAST border the first block of the left side
 		//GridLayout ll = new GridLayout(1,11);
 		//ll.setVgap(0);
 		topPanel = new JPanel(new GridBagLayout());//is placed in the first slot of the bottom side Panel and the first block of the right side is placed in the
 		rightPanel = new JPanel(new GridLayout(9,1));//last slot of the top side panel
-		bottomPanel = new JPanel(new GridBagLayout());
+		bottomPanel = new JPanel(new GridBagLayout());//new GridBagLayout());
 		
 		//Creation of the left side of the board
 		startBlock = new BoardBlock("Icons/start.jpg");//START
-		leftBlock1 = new BoardBlock("Icons/small.png");
+		leftBlock1 = new BoardBlock("Icons/brown1.jpg");
 		leftBlock2 = new BoardBlock("Icons/chanceSide.jpg");
-		leftBlock3 = new BoardBlock("Icons/small.png");
+		leftBlock3 = new BoardBlock("Icons/brown2.jpg");
 		leftBlock4 = new BoardBlock("Icons/small.png");
-		leftBlock5 = new BoardBlock("Icons/small.png");
-		leftBockl6 = new BoardBlock("Icons/small.png");
+		leftBlock5 = new BoardBlock("Icons/transport1.jpg");
+		leftBlock6 = new BoardBlock("Icons/lightBlue1.png");
 		leftBlock7 = new BoardBlock("Icons/orderSide.jpg");
-		leftBlock8 = new BoardBlock("Icons/small.png");
-		leftBlock9 = new BoardBlock("Icons/small.png");
+		leftBlock8 = new BoardBlock("Icons/lightBlue2.jpg");
+		leftBlock9 = new BoardBlock("Icons/lightBlue3.png");
 		
 		//Creation of the top side of the board
 		jailBlock = new BoardBlock("Icons/jail.jpg");//JAIL
-		topBlock1 = new BoardBlock("Icons/smallVert.png");
+		topBlock1 = new BoardBlock("Icons/pink1.png");
 		topBlock2 = new BoardBlock("Icons/smallVert.png");
-		topBlock3 = new BoardBlock("Icons/smallVert.png");
-		topBlock4 = new BoardBlock("Icons/smallVert.png");
-		topBlock5 = new BoardBlock("Icons/smallVert.png");
-		topBlock6 = new BoardBlock("Icons/smallVert.png");
+		topBlock3 = new BoardBlock("Icons/pink2.png");
+		topBlock4 = new BoardBlock("Icons/pink3.png");
+		topBlock5 = new BoardBlock("Icons/transport2.jpg");
+		topBlock6 = new BoardBlock("Icons/orange1.jpg");
 		topBlock7 = new BoardBlock("Icons/chanceVertical.jpg");
-		topBlock8 = new BoardBlock("Icons/smallVert.png");
-		topBlock9 = new BoardBlock("Icons/smallVert.png");
+		topBlock8 = new BoardBlock("Icons/orange2.jpg");
+		topBlock9 = new BoardBlock("Icons/orange3.jpg");
 		
 		//Creation of the right side of the board
 		stopBlock   = new BoardBlock("Icons/stop.jpg");//STOP
-		rightBlock1 = new BoardBlock("Icons/small.png");
+		rightBlock1 = new BoardBlock("Icons/red1.jpg");
 		rightBlock2 = new BoardBlock("Icons/orderSide.jpg");
-		rightBlock3 = new BoardBlock("Icons/small.png");
-		rightBlock4 = new BoardBlock("Icons/small.png");
-		rightBlock5 = new BoardBlock("Icons/small.png");
-		rightBlock6 = new BoardBlock("Icons/small.png");
-		rightBlock7 = new BoardBlock("Icons/small.png");
+		rightBlock3 = new BoardBlock("Icons/red2.jpg");
+		rightBlock4 = new BoardBlock("Icons/red3.jpg");
+		rightBlock5 = new BoardBlock("Icons/transport3.jpg");
+		rightBlock6 = new BoardBlock("Icons/yellow1.jpg");
+		rightBlock7 = new BoardBlock("Icons/yellow2.jpg");
 		rightBlock8 = new BoardBlock("Icons/small.png");
-		rightBlock9 = new BoardBlock("Icons/small.png");	
+		rightBlock9 = new BoardBlock("Icons/yellow3.jpg");	
 		
 		//Creation of the bottom side of the board
 		goToJailBlock = new BoardBlock("Icons/goToJail.jpg");//GO TO JAIL
 		bottomBlock1  = new BoardBlock("Icons/smallVert.png");
 		bottomBlock2  = new BoardBlock("Icons/smallVert.png");
-		bottomBlock3  = new BoardBlock("Icons/chanceVetrical.jpg");
+		bottomBlock3  = new BoardBlock("Icons/chanceVertical.jpg");
 		bottomBlock4  = new BoardBlock("Icons/smallVert.png");
-		bottomBlock5  = new BoardBlock("Icons/smallVert.png");
+		bottomBlock5  = new BoardBlock("Icons/transport4.jpg");
 		bottomBlock6  = new BoardBlock("Icons/orderVertical.jpg");
 		bottomBlock7  = new BoardBlock("Icons/smallVert.png");
 		bottomBlock8  = new BoardBlock("Icons/smallVert.png");
@@ -76,7 +76,7 @@ public class Board extends JFrame{
 		
 		
 		//Add items to left panel
-		leftPanel.add(leftBlock9.getPicture());
+		/*leftPanel.add(leftBlock9.getPicture());
 		leftPanel.add(leftBlock8.getPicture());
 		leftPanel.add(leftBlock7.getPicture());
 		leftPanel.add(leftBockl6.getPicture());
@@ -84,7 +84,16 @@ public class Board extends JFrame{
 		leftPanel.add(leftBlock4.getPicture());
 		leftPanel.add(leftBlock3.getPicture());
 		leftPanel.add(leftBlock2.getPicture());
-		leftPanel.add(leftBlock1.getPicture());
+		leftPanel.add(leftBlock1.getPicture());*/
+		addObjects(leftBlock1.getPicture(), leftPanel, 0, 8, 1, 1);
+		addObjects(leftBlock2.getPicture(), leftPanel, 0, 7, 1, 1);
+		addObjects(leftBlock3.getPicture(), leftPanel, 0, 6, 1, 1);
+		addObjects(leftBlock4.getPicture(), leftPanel, 0, 5, 1, 1);
+		addObjects(leftBlock5.getPicture(), leftPanel, 0, 4, 1, 1);
+		addObjects(leftBlock6.getPicture(), leftPanel, 0, 3, 1, 1);
+		addObjects(leftBlock7.getPicture(), leftPanel, 0, 2, 1, 1);
+		addObjects(leftBlock8.getPicture(), leftPanel, 0, 1, 1, 1);
+		addObjects(leftBlock9.getPicture(), leftPanel, 0, 0, 1, 1);
 		
 		//Add items to top panel
 		/*topPanel.add(jailBlock.getPicture());//JAIL goes here
@@ -111,7 +120,7 @@ public class Board extends JFrame{
 		addObjects(stopBlock.getPicture(), topPanel, 10, 0, 1, 1);
 		
 		//Add items to right panel
-		rightPanel.add(rightBlock1.getPicture());
+		/*rightPanel.add(rightBlock1.getPicture());
 		rightPanel.add(rightBlock2.getPicture());
 		rightPanel.add(rightBlock3.getPicture());
 		rightPanel.add(rightBlock4.getPicture());
@@ -119,7 +128,16 @@ public class Board extends JFrame{
 		rightPanel.add(rightBlock6.getPicture());
 		rightPanel.add(rightBlock7.getPicture());
 		rightPanel.add(rightBlock8.getPicture());
-		rightPanel.add(rightBlock9.getPicture());
+		rightPanel.add(rightBlock9.getPicture());*/
+		addObjects(rightBlock1.getPicture(), rightPanel, 0, 0, 1, 1);
+		addObjects(rightBlock2.getPicture(), rightPanel, 0, 1, 1, 1);
+		addObjects(rightBlock3.getPicture(), rightPanel, 0, 2, 1, 1);
+		addObjects(rightBlock4.getPicture(), rightPanel, 0, 3, 1, 1);
+		addObjects(rightBlock5.getPicture(), rightPanel, 0, 4, 1, 1);
+		addObjects(rightBlock6.getPicture(), rightPanel, 0, 5, 1, 1);
+		addObjects(rightBlock7.getPicture(), rightPanel, 0, 6, 1, 1);
+		addObjects(rightBlock8.getPicture(), rightPanel, 0, 7, 1, 1);
+		addObjects(rightBlock9.getPicture(), rightPanel, 0, 8, 1, 1);
 		
 		//Add items to bottom panel
 		/*bottomPanel.add(startBlock.getPicture());//START goes here
@@ -134,15 +152,15 @@ public class Board extends JFrame{
 		bottomPanel.add(bottomBlock1.getPicture());
 		bottomPanel.add(goToJailBlock.getPicture());//GO TO JAIL goes here*/
 		addObjects(startBlock.getPicture(), bottomPanel, 0, 0, 1, 1);
-		addObjects(bottomBlock1.getPicture(), bottomPanel, 1, 0, 1, 1);
-		addObjects(bottomBlock2.getPicture(), bottomPanel, 2, 0, 1, 1);
-		addObjects(bottomBlock3.getPicture(), bottomPanel, 3, 0, 1, 1);
-		addObjects(bottomBlock4.getPicture(), bottomPanel, 4, 0, 1, 1);
+		addObjects(bottomBlock9.getPicture(), bottomPanel, 1, 0, 1, 1);
+		addObjects(bottomBlock8.getPicture(), bottomPanel, 2, 0, 1, 1);
+		addObjects(bottomBlock7.getPicture(), bottomPanel, 3, 0, 1, 1);
+		addObjects(bottomBlock6.getPicture(), bottomPanel, 4, 0, 1, 1);
 		addObjects(bottomBlock5.getPicture(), bottomPanel, 5, 0, 1, 1);
-		addObjects(bottomBlock6.getPicture(), bottomPanel, 6, 0, 1, 1);
-		addObjects(bottomBlock7.getPicture(), bottomPanel, 7, 0, 1, 1);
-		addObjects(bottomBlock8.getPicture(), bottomPanel, 8, 0, 1, 1);
-		addObjects(bottomBlock9.getPicture(), bottomPanel, 9, 0, 1, 1);
+		addObjects(bottomBlock4.getPicture(), bottomPanel, 6, 0, 1, 1);
+		addObjects(bottomBlock3.getPicture(), bottomPanel, 7, 0, 1, 1);
+		addObjects(bottomBlock2.getPicture(), bottomPanel, 8, 0, 1, 1);
+		addObjects(bottomBlock1.getPicture(), bottomPanel, 9, 0, 1, 1);
 		addObjects(goToJailBlock.getPicture(), bottomPanel, 10, 0, 1, 1);
 		
 		//Add all the sides to the board
@@ -192,7 +210,7 @@ public class Board extends JFrame{
 			case 5:
 				return leftBlock5;
 			case 6:
-				return leftBockl6;
+				return leftBlock6;
 			case 7:
 				return leftBlock7;
 			case 8:
